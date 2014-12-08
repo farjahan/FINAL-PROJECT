@@ -40,7 +40,9 @@ public class ScorePage extends Activity implements AsyncResponse {
 		int score2 = socket2.getCurrentScore();
 		String gamesocre2 = Integer.toString(score2);
 		/********* Display user name ********/
-		showStatistics.setText(Game + " " + user + ":" + gamesocre + "\n" + Game2 + " " + user2 + ":" + gamesocre2);
+		showStatistics.setText("Playername: "+ user + "\n" + 
+								"Game: " + Game + " " + gamesocre + "\n" + 
+								"Game: " + Game2 + " " + user2 + ":" + gamesocre2);
 
 		SocketConnector.handler = this;
 		String gameStatistics2 = socket.getStatistics(user2);
