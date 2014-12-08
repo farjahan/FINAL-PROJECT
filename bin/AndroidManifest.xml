@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sjsu.cs175.final_project"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    <activity android:name=".GameOver"
+                  android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".GamePage" />
+         <activity android:name=".GameActivity" 
+              android:label="@string/app_name">
+               </activity>
+      
+        <activity android:name=".ScorePage" />
+        <activity android:name=".MyDb" />
+        <activity android:name=".Game2_Activity" 
+              android:label="@string/app_name" >
+            </activity>
+        
+        <activity android:name=".Game3_Activity" 
+              android:label="@string/app_name" >
+            </activity>
+        
+       
+        <activity android:name=".Account_SetUp_Page"  />
+        
+        
+        
+        <activity android:name=".Scores" />
+        <activity android:name=".TicTacToe"  />
+        <activity android:name=".Ball"  />
+        <activity android:name=".Cell"  />
+        <activity android:name=".Cross"  />
+        
+    </application>
+
+
+</manifest>
