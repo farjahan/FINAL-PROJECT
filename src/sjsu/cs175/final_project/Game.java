@@ -1,6 +1,7 @@
 package sjsu.cs175.final_project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -142,11 +143,15 @@ public class Game extends View {
 				handler.sendMessage(Message.obtain(handler, 2));
 			}
 			resizegame(x);
+			Intent intent = new Intent(getContext(), MainActivity.class);
+			getContext().startActivity(intent);
 
 		} else if (isFull()) {
 			System.out.println("Loose");
 			handler.sendMessage(Message.obtain(handler, 3));
 			resizegame(x);
+			Intent intent = new Intent(getContext(), MainActivity.class);
+			getContext().startActivity(intent);
 
 		}
 	}
