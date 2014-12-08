@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class ScorePage extends Activity implements AsyncResponse {
-	Scores socket, ascoket;
+	Scores socket, ascoket, socket2;
 	Scores userName;
 	TextView showStatistics;
 
@@ -19,19 +19,35 @@ public class ScorePage extends Activity implements AsyncResponse {
 		showStatistics = (TextView) findViewById(R.id.textView1);
 		socket = new Scores(getSharedPreferences("MyPREFERENCES",
 				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES",
-				Context.MODE_PRIVATE).edit());
+				Context.MODE_PRIVATE).edit(), this);
 		String user = socket.getUserName();
 
 		String Game = socket.getGameName();
 		int score = socket.getCurrentScore();
 		String gamesocre = Integer.toString(score);
-		/********* Display user name ********/
-		showStatistics.setText(Game + " " + user + ":" + gamesocre);
 
 		SocketConnector.handler = this;
 		String gameStatistics = socket.getStatistics(user);
 
 		Log.i("Details of ", "game " + gameStatistics);
+		
+		socket2 = new Scores(getSharedPreferences("MyPREFERENCES2",
+				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES2",
+				Context.MODE_PRIVATE).edit(), this);
+		String user2 = socket2.getUserName();
+
+		String Game2 = socket2.getGameName();
+		int score2 = socket2.getCurrentScore();
+		String gamesocre2 = Integer.toString(score2);
+		/********* Display user name ********/
+		showStatistics.setText(Game + " " + user + ":" + gamesocre + "\n" + Game2 + " " + user2 + ":" + gamesocre2);
+
+		SocketConnector.handler = this;
+		String gameStatistics2 = socket.getStatistics(user2);
+
+		Log.i("Details of ", "game " + gameStatistics2);
+
+		
 	}
 
 	@Override

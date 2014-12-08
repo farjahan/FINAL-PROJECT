@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -133,25 +134,40 @@ public class Game extends View {
 		singlesquare[y_aux][x_aux] = cel;
 
 		handler.sendMessage(Message.obtain(handler, 0));
+		Scores socket = new Scores(getContext().getSharedPreferences("MyPREFERENCES2",
+				Context.MODE_PRIVATE), getContext().getSharedPreferences("MyPREFERENCES2",
+				Context.MODE_PRIVATE).edit(), getContext());
+
 
 		if (validate_game()) {
+
 			if (whatdrawn) {
 				System.out.println("You Win");
 				handler.sendMessage(Message.obtain(handler, 1));
+				//save scores
+				socket.setCurrentScore(1);
+
 			} else {
 				System.out.println("Computer Win");
 				handler.sendMessage(Message.obtain(handler, 2));
+				socket.setCurrentScore(0);
 			}
+			
+//			Intent intent = new Intent(getContext(), GameOver.class);
+//			getContext().startActivity(intent);
+			Intent intentm = new Intent(getContext(), MainActivity.class);
+			getContext().startActivity(intentm);
 			resizegame(x);
-			Intent intent = new Intent(getContext(), MainActivity.class);
-			getContext().startActivity(intent);
 
 		} else if (isFull()) {
 			System.out.println("Loose");
 			handler.sendMessage(Message.obtain(handler, 3));
+			socket.setCurrentScore(0);
+//			Intent intent = new Intent(getContext(), GameOver.class);
+//			getContext().startActivity(intent);
+			Intent intentm = new Intent(getContext(), MainActivity.class);
+			getContext().startActivity(intentm);
 			resizegame(x);
-			Intent intent = new Intent(getContext(), MainActivity.class);
-			getContext().startActivity(intent);
 
 		}
 	}
@@ -279,4 +295,8 @@ public class Game extends View {
 	public int getPlayerwin() {
 		return playerwin;
 	}
+
+
+
+
 }

@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -21,8 +24,9 @@ public class Scores {
 	String username;
 	String gamename;
 	String gamespeed;
+	private Context con;
 
-	public Scores(SharedPreferences sp, SharedPreferences.Editor e) {
+	public Scores(SharedPreferences sp, SharedPreferences.Editor e, Context context) {
 		this.sharedPref = sp;
 		this.editor = e;
 		this.currentscore = "CurrentScore";
@@ -30,6 +34,7 @@ public class Scores {
 		this.username = "Name";
 		this.gamename = "GameName";
 		this.gamespeed = "Speed";
+		this.con = context;
 	}
 
 	public int getCurrentScore() {
@@ -85,7 +90,7 @@ public class Scores {
 
 	public void savescores() {
 		int current = getCurrentScore();
-
+		setHighestScore(getCurrentScore());
 	}
 
 	public void incCurrentScore() {
@@ -180,6 +185,64 @@ public class Scores {
 
 		}
 
+	}
+	
+	
+	private void setHighestScore(int current) {
+		initDB();
+		int scoreInDb = getHighestScoreFromDB();
+
+		Log.i("Existing DB Score is :", " " + scoreInDb);
+		
+		if(current > scoreInDb)
+			scoreInDb = current;
+			
+		
+		Log.i("Current score is the highest score :", " " + scoreInDb);
+		MyDb hw5 = new MyDb(con);
+		SQLiteDatabase db = hw5.getWritableDatabase();
+
+		db.execSQL("update hw5 set HIGH_SCORE =" + scoreInDb
+				+ " where name =  " + username);
+		db.close();
+		
+
+	}
+	
+	private void initDB() {
+		MyDb hw5 = new MyDb(con);
+		SQLiteDatabase db = hw5.getWritableDatabase();
+		// create table at first time
+		String sql = "create table if not exists hw5 (name varchar(50), speed integer, HIGH_SCORE integer, score intger)";
+		db.execSQL(sql);
+
+		// db.execSQL("delete from hw5 where name = 'player 1'");
+		Cursor rawQuery = db.rawQuery(
+				"select * from hw5 where name = 'player 1'", null);
+
+		if (rawQuery.getCount() == 0) {
+			db.execSQL("insert into hw5 (name, HIGH_SCORE) values('player 1', 0)");
+		}
+		rawQuery.close();
+		db.close();
+	}
+
+	private int getHighestScoreFromDB() {
+		initDB();
+		MyDb hw5 = new MyDb(con);
+		SQLiteDatabase db = hw5.getReadableDatabase();
+		Cursor cursor = db.rawQuery(
+				"select * from hw5 where name = " + username, null);
+		cursor.moveToFirst();
+		int count = cursor.getColumnCount();
+		int scoreInDb = 0;
+		if (count > 0) {
+			scoreInDb = cursor.getInt(cursor.getColumnIndex("HIGH_SCORE"));
+		}
+
+		cursor.close();
+		db.close();
+		return scoreInDb;
 	}
 
 }

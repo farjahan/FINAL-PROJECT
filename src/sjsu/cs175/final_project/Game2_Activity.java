@@ -112,7 +112,7 @@ public class Game2_Activity extends Activity implements OnClickListener {
 		// load highScore, speed from database
 		savedscores = new Scores(getSharedPreferences("MyPREFERENCES",
 				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES",
-				Context.MODE_PRIVATE).edit());
+				Context.MODE_PRIVATE).edit(), this);
 
 		speed = savedscores.getGameSpeed();
 		savedscores.setGameName("Animal");

@@ -59,7 +59,7 @@ public class MainActivity extends TabActivity {
 		// Default tab is the first tab.
 		userName = new Scores(getSharedPreferences("MyPREFERENCES",
 				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES",
-				Context.MODE_PRIVATE).edit());
+				Context.MODE_PRIVATE).edit(), this);
 		String user = userName.getUserName();
 		Log.i("user name", "is: " + user);
 		if (user.isEmpty()) {
@@ -97,7 +97,7 @@ public class MainActivity extends TabActivity {
 		Context context = getApplicationContext();
 		userName = new Scores(getSharedPreferences("MyPREFERENCES",
 				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES",
-				Context.MODE_PRIVATE).edit());
+				Context.MODE_PRIVATE).edit(), this);
 		String user = userName.getUserName();
 		CharSequence text = user + " Welcome to Game!";
 		int duration = Toast.LENGTH_LONG;

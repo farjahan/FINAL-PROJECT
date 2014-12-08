@@ -27,7 +27,7 @@ public class Account_SetUp_Page extends Activity implements
 		setContentView(R.layout.accout_setup_layout);
 		score = new Scores(getSharedPreferences("MyPREFERENCES",
 				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES",
-				Context.MODE_PRIVATE).edit());
+				Context.MODE_PRIVATE).edit(), this);
 
 		init();
 		speedBar.setOnSeekBarChangeListener(this);

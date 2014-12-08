@@ -1,18 +1,27 @@
 package sjsu.cs175.final_project;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class TicTacToe extends Activity {
 	private Game game1;
+	Scores savedscores;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		game1 = new Game(this);
 		setContentView(game1);
+		// load highScore, speed from database
+		savedscores = new Scores(getSharedPreferences("MyPREFERENCES2",
+				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES2",
+				Context.MODE_PRIVATE).edit(), this);
+
+		int speed = savedscores.getGameSpeed();
+		savedscores.setGameName("TicTacToe");
 	}
 
 	@Override

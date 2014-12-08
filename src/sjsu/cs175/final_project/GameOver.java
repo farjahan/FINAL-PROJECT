@@ -21,7 +21,7 @@ public class GameOver extends Activity {
 
 		score = new Scores(getSharedPreferences("MyPREFERENCES",
 				Context.MODE_PRIVATE), getSharedPreferences("MyPREFERENCES",
-				Context.MODE_PRIVATE).edit());
+				Context.MODE_PRIVATE).edit(), this);
 
 		int gameScore = score.getCurrentScore();
 		textScore.setText(getString(R.string.text_score) + " " + gameScore);
