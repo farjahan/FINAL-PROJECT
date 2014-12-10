@@ -42,7 +42,7 @@ public class ScorePage extends Activity implements AsyncResponse {
 		/********* Display user name ********/
 		showStatistics.setText("Playername: "+ user + "\n" + 
 								"Game: " + Game + " " + gamesocre + "\n" + 
-								"Game: " + Game2 + " " + user2 + ":" + gamesocre2);
+								"Game: " + Game2 + " " +  gamesocre2);
 
 		SocketConnector.handler = this;
 		String gameStatistics2 = socket.getStatistics(user2);
