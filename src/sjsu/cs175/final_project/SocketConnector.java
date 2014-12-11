@@ -58,7 +58,6 @@ public class SocketConnector extends AsyncTask<String, Integer, String> {
 				try {
 					socket.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

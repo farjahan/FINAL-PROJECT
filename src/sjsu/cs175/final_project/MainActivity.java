@@ -84,7 +84,6 @@ public class MainActivity extends TabActivity {
 
 			@Override
 			public void onTabChanged(String arg0) {
-				// TODO Auto-generated method stub
 				setTabColor(tabHost);
 			}
 

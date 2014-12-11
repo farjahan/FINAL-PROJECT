@@ -46,14 +46,13 @@ public class GameOver extends Activity {
 
 			@Override
 			public void onFinish() {
-				//
+				//Do Nothing
 				finish();
 			}
 
 			@Override
 			public void onTick(long arg0) {
-				// TODO Auto-generated method stub
-
+				//Do Nothing
 			}
 
 		};
