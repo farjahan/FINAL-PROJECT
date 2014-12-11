@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class Account_SetUp_Page extends Activity implements
 		SeekBar.OnSeekBarChangeListener, OnClickListener {
+	
 	private int speed; // million second
 	private int speedRate; // |max-min|/max_seekbar
 	private EditText playerName;
@@ -22,6 +23,9 @@ public class Account_SetUp_Page extends Activity implements
 	private SeekBar speedBar;
 	Scores score;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.accout_setup_layout);
@@ -84,9 +88,7 @@ public class Account_SetUp_Page extends Activity implements
 
 	/**
 	 * Show the speed
-	 * 
-	 * @param speed
-	 *            a million second integer
+	 * @param speed a million second integer
 	 */
 	private void showSpeedMessage(int speed) {
 		double second = speed / 1000.0;
@@ -97,7 +99,6 @@ public class Account_SetUp_Page extends Activity implements
 
 	/**
 	 * Get the speed from speedBar
-	 * 
 	 * @return speed million second
 	 */
 	private int getSpeed() {
@@ -114,6 +115,9 @@ public class Account_SetUp_Page extends Activity implements
 		speedBar.setProgress(speedBar.getMax() - speed / speedRate + 1);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.SeekBar.OnSeekBarChangeListener#onProgressChanged(android.widget.SeekBar, int, boolean)
+	 */
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
@@ -130,18 +134,22 @@ public class Account_SetUp_Page extends Activity implements
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.SeekBar.OnSeekBarChangeListener#onStartTrackingTouch(android.widget.SeekBar)
+	 */
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
-		// TODO Auto-generated method stub
-
+		// do nothing
 	}
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
-		// TODO Auto-generated method stub
-
+		// do nothing
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View v)
 	/**
 	 * Handles clicks events for this activity -- new code we added
@@ -149,7 +157,7 @@ public class Account_SetUp_Page extends Activity implements
 	 * @param v
 	 *            - view that event is coming from
 	 */
-	{
+	 {
 		switch (v.getId()) {
 		/*
 		 * handle the case coming from thing on our Activity with id button

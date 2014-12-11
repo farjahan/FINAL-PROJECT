@@ -25,6 +25,9 @@ public class Game extends View {
 
 	Handler handler = new Handler() {
 		// @Override
+		/* (non-Javadoc)
+		 * @see android.os.Handler#handleMessage(android.os.Message)
+		 */
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 0:
@@ -50,10 +53,16 @@ public class Game extends View {
 		}
 	};
 
+	/**Retrieves the game size.
+	 * @return the game size
+	 */
 	public int getGameSize() {
 		return x;
 	}
 
+	/**Creates game canvas split into 9 cells.
+	 * @param context to draw onto
+	 */
 	public Game(Context context) {
 		super(context);
 
@@ -79,6 +88,9 @@ public class Game extends View {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onDraw(android.graphics.Canvas)
+	 */
 	@Override
 	protected void onDraw(Canvas canvas) {
 		for (int i = 0; i < singlesquare.length; i++) {
@@ -101,6 +113,9 @@ public class Game extends View {
 		super.onDraw(canvas);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
+	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		int x_aux = (int) (event.getX() / (this.getWidth() / x));
@@ -109,6 +124,10 @@ public class Game extends View {
 		return super.onTouchEvent(event);
 	}
 
+	/**Get's the current piece associated with the Player.
+	 * @param player
+	 * @return
+	 */
 	public String getPiece(int player) {
 		switch (player) {
 		case 1:
