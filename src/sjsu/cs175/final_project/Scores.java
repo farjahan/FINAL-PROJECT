@@ -103,8 +103,8 @@ public class Scores {
 		return sharedPref.getString(gamename, "none");
 	}
 
-	/**
-	 * @param gname
+	/**Changes the name of the current game being played.
+	 * @param name of current game
 	 */
 	public void setGameName(String gname) {
 		editor.putString(gamename, gname);
@@ -112,39 +112,60 @@ public class Scores {
 		editor.commit();
 	}
 
+	/**Retrieves the current Game Speed.
+	 * @return the current game speed
+	 */
 	public int getGameSpeed() {
 		return sharedPref.getInt(gamespeed, 1000);
 	}
 
+	/**Sets the current Game Speed.
+	 * @param set current speed
+	 */
 	public void setGameSpeed(int speed) {
 		editor.putInt(gamespeed, speed);
 		reset();
 		editor.commit();
 	}
 
+	/**
+	 * Saves the current scores.  
+	 */
 	public void savescores() {
 		int current = getCurrentScore();
 		setHighestScore(getCurrentScore());
 	}
 
+	/**
+	 * Increments current score.
+	 */
 	public void incCurrentScore() {
 		int current = getCurrentScore();
 		current++;
 		setCurrentScore(current);
 	}
 
+	/**
+	 * Decrements the number of lives.
+	 */
 	public void decLives() {
 		int live = getLives();
 		live--;
 		setLives(live);
 	}
 
+	/**
+	 * Resets the current score to 0 and the current lives to 3. 
+	 */
 	public void reset() {
 		setLives(3);
 		editor.putInt(currentscore, 0);
 		editor.commit();
 	}
 
+	/**Registers the username with the server.
+	 * @return success or fail message
+	 */
 	public String registerName() {
 		Log.i("calling socket data",
 				"client calling socket data registerName(): " + getUserName());
@@ -155,6 +176,9 @@ public class Scores {
 
 	}
 
+	/**Sends the game result to ther server
+	 * @return success or fail message
+	 */
 	public String sendGameResult() {
 		Log.i("calling socket data",
 				"client returns calling socket data sendGameResult(): "
@@ -166,6 +190,10 @@ public class Scores {
 		return ans;
 	}
 
+	/**Retrieves the statistics for a given user.
+	 * @param playername
+	 * @return The statistics for a given user
+	 */
 	public String getStatistics(String playername) {
 		Log.i("calling socket data",
 				"client calling socket data getStatistics(): " + playername);
@@ -175,14 +203,21 @@ public class Scores {
 		return ans;
 	}
 
+	/**Calls the socket with data.
+	 * @param data to be sent to socket
+	 * @return success or fail message
+	 */
 	private String callSocket(String string) {
-		// TODO Auto-generated method stub
 		SocketConnector connector = new SocketConnector();
 
 		AsyncTask<String, Integer, String> execute = connector.execute(string);
 		return "";
 	}
 
+	/**Calls the socket with data the old way
+	 * @param data to be sent to socket
+	 * @return success or fail message
+	 */
 	@SuppressWarnings("resource")
 	private String callSocket_old(String socketData) {
 		Socket socket = null;
@@ -222,6 +257,9 @@ public class Scores {
 	}
 	
 	
+	/**Sets the high score if the current score is greater.
+	 * @param current score
+	 */
 	private void setHighestScore(int current) {
 		initDB();
 		int scoreInDb = getHighestScoreFromDB();
@@ -243,6 +281,9 @@ public class Scores {
 
 	}
 	
+	/**
+	 * Initializes the database with appropriate tables and columns.
+	 */
 	private void initDB() {
 		MyDb hw5 = new MyDb(con);
 		SQLiteDatabase db = hw5.getWritableDatabase();
@@ -261,6 +302,9 @@ public class Scores {
 		db.close();
 	}
 
+	/**Retrieves the highest score from the database
+	 * @return the highest score
+	 */
 	private int getHighestScoreFromDB() {
 		initDB();
 		MyDb hw5 = new MyDb(con);
