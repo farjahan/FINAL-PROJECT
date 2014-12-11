@@ -8,7 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+/**Game Selection Page where users can choose which game to play.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class GamePage extends Activity implements OnClickListener {
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_layout);
@@ -17,14 +27,12 @@ public class GamePage extends Activity implements OnClickListener {
 
 		button1.setOnClickListener(this);
 		button2.setOnClickListener(this);
-
 	}
 
 	/**
-	 * Handles clicks events for this activity -- new code we added
+	 * Start either Game1 or Game2 depending on option clicked.
 	 * 
-	 * @param v
-	 *            - view that event is coming from
+	 * @param view that event is coming from
 	 */
 	public void onClick(View v) {
 		Intent i;
@@ -46,6 +54,9 @@ public class GamePage extends Activity implements OnClickListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -53,6 +64,9 @@ public class GamePage extends Activity implements OnClickListener {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

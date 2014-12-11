@@ -6,12 +6,20 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
-/* Game over class end the game and display game result**/
+/**Game over class which ends the game and displays game result.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class GameOver extends Activity {
 	private int waiting_time;
 	private TextView textScore;
 	Scores score;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,7 +38,7 @@ public class GameOver extends Activity {
 	}
 
 	/**
-	 * Wait for 10 second to return start page
+	 * Waits for 10 second to return start page.
 	 */
 	private void gameEnd() {
 		// init timer
@@ -50,7 +58,6 @@ public class GameOver extends Activity {
 
 		};
 		timer.start();
-
 	}
 
 }

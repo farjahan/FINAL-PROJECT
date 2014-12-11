@@ -6,11 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+/**A Score Page that displays statistics for a given user.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class ScorePage extends Activity implements AsyncResponse {
 	Scores socket, ascoket, socket2;
 	Scores userName;
 	TextView showStatistics;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -52,9 +61,11 @@ public class ScorePage extends Activity implements AsyncResponse {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see sjsu.cs175.final_project.AsyncResponse#processFinish(java.lang.String)
+	 */
 	@Override
 	public void processFinish(String output) {
-		// TODO Auto-generated method stub
 		if (output != null && output.length() > 0) {
 			showStatistics.setText(output);
 		}

@@ -11,11 +11,20 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.Toast;
 
+/**Main Class that contains the tab sets of the Setup Page, Game Page, and Statistics Page.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class MainActivity extends TabActivity {
 	Scores userName;
 
 	TabHost tabHost;
 
+	/* (non-Javadoc)
+	 * @see android.app.ActivityGroup#onCreate(android.os.Bundle)
+	 */
 	@SuppressLint("NewApi")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,7 +92,10 @@ public class MainActivity extends TabActivity {
 		setTabColor(tabHost);
 	}
 
-	// Set tab color
+
+	/**Sets the Tab color.
+	 * @param tabHost to set the color to
+	 */
 	public void setTabColor(TabHost tabHost) {
 		for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
 			tabHost.getTabWidget().getChildAt(i)
@@ -93,6 +105,9 @@ public class MainActivity extends TabActivity {
 				.setBackgroundColor(Color.RED); // selected, active tabs
 	}
 
+	/**
+	 * Displays the Welcome Message when the game first started.
+	 */
 	private void displayWelcomeMessege() {
 		Context context = getApplicationContext();
 		userName = new Scores(getSharedPreferences("MyPREFERENCES",

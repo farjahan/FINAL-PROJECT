@@ -9,9 +9,18 @@ import java.net.Socket;
 
 import android.os.AsyncTask;
 
+/**Socket Connector that connects to the Server.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class SocketConnector extends AsyncTask<String, Integer, String> {
 	public static AsyncResponse handler = null;
 
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#doInBackground(Params[])
+	 */
 	@Override
 	protected String doInBackground(String... params) {
 		Socket socket = null;

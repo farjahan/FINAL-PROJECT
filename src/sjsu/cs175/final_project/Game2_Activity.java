@@ -16,6 +16,12 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+/**Animal Activity Class Game. 
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class Game2_Activity extends Activity implements OnClickListener {
 	private int lives;
 	private int score;
@@ -78,6 +84,9 @@ public class Game2_Activity extends Activity implements OnClickListener {
 
 	};
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,7 +96,7 @@ public class Game2_Activity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * Initialize
+	 * Initialize all of the widgets on the canvas.
 	 */
 	private void init() {
 		textScore = (TextView) findViewById(R.id.game1TextView1);
@@ -120,7 +129,7 @@ public class Game2_Activity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * Start the game
+	 * Start the game.
 	 */
 	private void gameStart() {
 		// wait for 0.5 second to start a new game
@@ -140,6 +149,9 @@ public class Game2_Activity extends Activity implements OnClickListener {
 		finish();
 	}
 
+	/**Gets random string to display.
+	 * @return random string
+	 */
 	private String getRandomOrientation() {
 		final String[] arr = { "Cat", "Dog", "Elephant", "Squirrel" };
 		Random random = new Random();
@@ -178,6 +190,9 @@ public class Game2_Activity extends Activity implements OnClickListener {
 														// player
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View v) {
 		switch (v.getId()) {
 		/*
@@ -296,6 +311,9 @@ public class Game2_Activity extends Activity implements OnClickListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onConfigurationChanged(android.content.res.Configuration)
+	 */
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);

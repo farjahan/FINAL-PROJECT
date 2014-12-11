@@ -7,9 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-/**
- * @author Swathi
- *
+/**Creates a cell with a Circle in it.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
  */
 public class Ball extends Cell {
 

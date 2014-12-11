@@ -5,15 +5,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * A SQLiteOpenhelper to create "tictactoe.db" and table hw5
+/**A SQLiteOpenhelper to create "tictactoe.db" and table hw5.
  * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
  */
 public class MyDb extends SQLiteOpenHelper {
 
 	/**
-	 * constructor
-	 * 
+	 * Create a database.
 	 * @param context
 	 */
 	public MyDb(Context context) {
@@ -21,6 +22,9 @@ public class MyDb extends SQLiteOpenHelper {
 		// activity, database name, , version
 	}
 
+	/* (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#onCreate(android.database.sqlite.SQLiteDatabase)
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// create table at first time
@@ -33,6 +37,9 @@ public class MyDb extends SQLiteOpenHelper {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
 		// drop and create table

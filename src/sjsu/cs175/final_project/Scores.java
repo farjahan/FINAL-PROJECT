@@ -13,6 +13,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
+/**Scores class to store scores.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class Scores {
 
 	SharedPreferences sharedPref;
@@ -26,6 +32,11 @@ public class Scores {
 	String gamespeed;
 	private Context con;
 
+	/**Initializes SharedPreferences.
+	 * @param sharedPreferences
+	 * @param sharedPreferences editor
+	 * @param context
+	 */
 	public Scores(SharedPreferences sp, SharedPreferences.Editor e, Context context) {
 		this.sharedPref = sp;
 		this.editor = e;
@@ -37,41 +48,64 @@ public class Scores {
 		this.con = context;
 	}
 
+	/**Retrieves the current score.
+	 * @return the current score
+	 */
 	public int getCurrentScore() {
 		return sharedPref.getInt(currentscore, 0);
 	}
 
+	/**Saves the current score.
+	 * @param current score to save
+	 */
 	public void setCurrentScore(int score) {
 		editor.putInt(currentscore, score);
 		editor.commit();
 		sendGameResult();
 	}
 
+	/**Retrieves the lives left for a certain user.
+	 * @return the lives left
+	 */
 	public int getLives() {
 		return sharedPref.getInt(livescore, 3);
 	}
 
+	/**Saves the lives left for a given user.
+	 * @param lives left
+	 */
 	public void setLives(int live) {
 		editor.putInt(livescore, live);
 		editor.commit();
 	}
 
+	/**Retrieves the username of the current player.
+	 * @return the username
+	 */
 	public String getUserName() {
 		return sharedPref.getString(username, "Player 1");
 	}
 
+	/**Changes the current username of the player.
+	 * @param username
+	 */
 	public void setUserName(String name) {
 		editor.putString(username, name);
 		editor.commit();
 		registerName();
 		reset();
-
 	}
 
+	/**Retrieves the current game being played.
+	 * @return name of the current game
+	 */
 	public String getGameName() {
 		return sharedPref.getString(gamename, "none");
 	}
 
+	/**
+	 * @param gname
+	 */
 	public void setGameName(String gname) {
 		editor.putString(gamename, gname);
 		reset();

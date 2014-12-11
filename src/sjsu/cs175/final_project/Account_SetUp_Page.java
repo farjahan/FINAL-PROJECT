@@ -13,6 +13,12 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+/**Settings page for users to save their username and desired game speed.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class Account_SetUp_Page extends Activity implements
 		SeekBar.OnSeekBarChangeListener, OnClickListener {
 	

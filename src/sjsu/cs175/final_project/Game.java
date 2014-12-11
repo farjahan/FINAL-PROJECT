@@ -12,6 +12,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+/**TicTacToe View which is divided into nine cells.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
+ */
 public class Game extends View {
 
 	private Cell[][] singlesquare = null;
@@ -138,6 +144,10 @@ public class Game extends View {
 		return null;
 	}
 
+	/**Draws an image at the current coordinates.
+	 * @param x coordinate
+	 * @param y coordinate
+	 */
 	public void drawimage(int x_aux, int y_aux) {
 		Cell cel = null;
 		if (whatdrawn) {
@@ -172,8 +182,6 @@ public class Game extends View {
 				socket.setCurrentScore(0);
 			}
 			
-//			Intent intent = new Intent(getContext(), GameOver.class);
-//			getContext().startActivity(intent);
 			Intent intentm = new Intent(getContext(), MainActivity.class);
 			getContext().startActivity(intentm);
 			resizegame(x);
@@ -182,8 +190,6 @@ public class Game extends View {
 			System.out.println("Loose");
 			handler.sendMessage(Message.obtain(handler, 3));
 			socket.setCurrentScore(0);
-//			Intent intent = new Intent(getContext(), GameOver.class);
-//			getContext().startActivity(intent);
 			Intent intentm = new Intent(getContext(), MainActivity.class);
 			getContext().startActivity(intentm);
 			resizegame(x);
@@ -191,6 +197,9 @@ public class Game extends View {
 		}
 	}
 
+	/**Determines if someone has won, tied, or still playing.
+	 * @return true if someone won or game is over
+	 */
 	private boolean validate_game() {
 		int contador = 0;
 		Cell anterior = null;
@@ -283,6 +292,9 @@ public class Game extends View {
 		return false;
 	}
 
+	/**Determines whether the board is filled or not. 
+	 * @return true if the board is full, false if the board is empty
+	 */
 	public boolean isFull() {
 		for (int i = 0; i < singlesquare.length; i++) {
 			for (int j = 0; j < singlesquare[0].length; j++) {
@@ -294,6 +306,9 @@ public class Game extends View {
 		return true;
 	}
 
+	/**Resizes the cells in the game by a given width.
+	 * @param width of cell to resize
+	 */
 	public void resizegame(int s) {
 		x = s;
 		y = s;
@@ -311,11 +326,11 @@ public class Game extends View {
 		handler.sendMessage(Message.obtain(handler, 0));
 	}
 
+	/**Retrieves the player that won
+	 * @return 1 for the first player, 2 for the second player
+	 */
 	public int getPlayerwin() {
 		return playerwin;
 	}
-
-
-
 
 }

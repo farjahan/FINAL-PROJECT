@@ -7,9 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-/**
- * @author Swathi
- *
+/**Creates an Empty Cell.
+ * 
+ * @authors Swathi Kotturu and Farjahan Hossain
+ * @class CS 175 section 1
+ * @date Wednesday, December 10, 2014
  */
 public class Empty extends Cell {
 
